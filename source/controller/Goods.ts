@@ -26,7 +26,7 @@ class Goods extends BaseModel {
 }
 
 @JsonController('/good')
-export class UserController {
+export class GoodsController {
     @Get()
     async getGoodsList() {
         try {
