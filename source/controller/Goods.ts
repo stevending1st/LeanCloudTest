@@ -8,7 +8,7 @@ import {
     Post
 } from 'routing-controllers';
 // import { ResponseSchema } from 'routing-controllers-openapi';
-import { User, Query, Object as LCObject } from 'leanengine';
+import { Query, Object as LCObject } from 'leanengine';
 
 // import { fetchPage } from '../utility';
 // import { BaseQuery, UserModel, UserList } from '../model';
@@ -28,15 +28,37 @@ class Goods extends BaseModel {
 @JsonController('/good')
 export class GoodsController {
     @Get()
-    async getGoodsList() {
-        try {
-            const goodslist = await new Query('Goods')
-                .equalTo('statu', 'open')
-                .find();
-            return goodslist;
-        } catch (err) {
-            console.log(err);
-        }
+    getGoodsList() {
+        // try {
+        //     const goodslist = await new Query('Goods')
+        //         .equalTo('statu', 'open')
+        //         .find();
+        //     return goodslist;
+        // } catch (err) {
+        //     console.log(err);
+        // }
+
+        // 声明 class
+        const Todo = LCObject.extend('Todo');
+
+        // 构建对象
+        const todo = new Todo();
+
+        // 为属性赋值
+        todo.set('title', '工程师周会');
+        todo.set('content', '周二两点，全体成员');
+
+        // 将对象保存到云端
+        todo.save().then(
+            todo => {
+                // 成功保存之后，执行其他逻辑
+                console.log(`保存成功。objectId：${todo.id}`);
+            },
+            error => {
+                // 异常处理
+                console.log(`ERR: ${error}`);
+            }
+        );
     }
 
     @Post()
