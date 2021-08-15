@@ -13,9 +13,9 @@ import { Query, Object as LCObject } from 'leanengine';
 // import { fetchPage } from '../utility';
 // import { BaseQuery, UserModel, UserList } from '../model';
 
-import { BaseModel } from '../model/Base';
+// import { BaseModel } from '../model/Base';
 
-class Goods extends BaseModel {
+class Goods extends LCObject {
     username?: string;
     statu?: string;
     constructor(username, statu = 'open') {
@@ -24,6 +24,7 @@ class Goods extends BaseModel {
         this.statu = statu;
     }
 }
+LCObject.register(Goods);
 
 @JsonController('/good')
 export class GoodsController {
@@ -39,20 +40,16 @@ export class GoodsController {
         // }
 
         // 声明 class
-        const Todo = LCObject.extend('Todo');
+        // const Todo = LCObject.re;
 
         // 构建对象
-        const todo = new Todo();
-
-        // 为属性赋值
-        todo.set('title', '工程师周会');
-        todo.set('content', '周二两点，全体成员');
+        const goods = new Goods('111');
 
         // 将对象保存到云端
-        todo.save().then(
-            todo => {
+        goods.save().then(
+            goods => {
                 // 成功保存之后，执行其他逻辑
-                console.log(`保存成功。objectId：${todo.id}`);
+                console.log(`保存成功。objectId：${goods.id}`);
             },
             error => {
                 // 异常处理
@@ -64,8 +61,7 @@ export class GoodsController {
     @Post()
     async inputGoods() {
         try {
-            const goods = LCObject.extend('Goods');
-            const newGoods = await new goods('111').save();
+            const newGoods = await new Goods('111').save();
             console.log(`保存成功，objectId: ${newGoods.id}`);
         } catch (err) {
             console.log(err);
