@@ -2,9 +2,9 @@ import {
     JsonController,
     Get,
     QueryParams,
-    Param,
+    // Param,
     // Patch,
-    // Body,
+    Body,
     Post
 } from 'routing-controllers';
 // import { ResponseSchema } from 'routing-controllers-openapi';
@@ -62,7 +62,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(@Param('username') username: string) {
+    async upDateGoods(@Body() { username: username }: { username: string }) {
         try {
             const goods = LCObject.createWithoutData('Goods', '111');
             // 对 balance 原子减少 100
