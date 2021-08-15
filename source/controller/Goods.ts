@@ -61,7 +61,7 @@ export class GoodsController {
     @Post()
     async inputGoods() {
         try {
-            const newGoods = await new Goods('111').save();
+            const newGoods = await new Goods('2222').save();
             console.log(`保存成功，objectId: ${newGoods.id}`);
         } catch (err) {
             console.log(err);
