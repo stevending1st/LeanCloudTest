@@ -64,6 +64,7 @@ export class GoodsController {
     @Post('/update')
     async upDateGoods(username: string) {
         try {
+            console.log('----jjj----:', username);
             const goods = LCObject.createWithoutData('Goods', '111');
             // 对 balance 原子减少 100
             goods.set('statu', 'close');
