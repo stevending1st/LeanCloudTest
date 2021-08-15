@@ -2,7 +2,7 @@ import {
     JsonController,
     Get,
     QueryParams,
-    // Param,
+    Param,
     // Patch,
     // Body,
     Post
@@ -62,7 +62,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(username: string) {
+    async upDateGoods(@Param('username') username: string) {
         try {
             const goods = LCObject.createWithoutData('Goods', '111');
             // 对 balance 原子减少 100
