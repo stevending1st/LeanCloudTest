@@ -70,7 +70,7 @@ export class GoodsController {
             goods.set('statu', 'close');
             const goodsObj = await goods.save(null, {
                 // 设置条件
-                query: new Query('Goods').equalTo('uaername', username),
+                query: new Query('Goods').equalTo('uaername', 1),
                 // 操作结束后，返回最新数据。
                 // 如果是新对象，则所有属性都会被返回，
                 // 否则只有更新的属性会被返回。
