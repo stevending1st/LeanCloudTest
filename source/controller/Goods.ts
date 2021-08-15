@@ -1,7 +1,7 @@
 import {
     JsonController,
     Get,
-    // QueryParams,
+    QueryParams,
     // Param,
     // Patch,
     // Body,
@@ -11,7 +11,7 @@ import {
 import { Query, Object as LCObject } from 'leanengine';
 
 // import { fetchPage } from '../utility';
-// import { BaseQuery, UserModel, UserList } from '../model';
+import { BaseQuery, UserModel, UserList } from '../model';
 
 // import { BaseModel } from '../model/Base';
 
@@ -29,7 +29,9 @@ LCObject.register(Goods);
 @JsonController('/good')
 export class GoodsController {
     @Get()
-    getGoodsList() {
+    async getGoodsList(
+        @QueryParams() { pageSize: size, pageIndex: index }: BaseQuery
+    ) {
         // try {
         //     const goodslist = await new Query('Goods')
         //         .equalTo('statu', 'open')
@@ -38,24 +40,15 @@ export class GoodsController {
         // } catch (err) {
         //     console.log(err);
         // }
-
-        // 声明 class
-        // const Todo = LCObject.re;
-
-        // 构建对象
-        const goods = new Goods('111');
-
-        // 将对象保存到云端
-        goods.save().then(
-            goods => {
-                // 成功保存之后，执行其他逻辑
-                console.log(`保存成功。objectId：${goods.id}`);
-            },
-            error => {
-                // 异常处理
-                console.log(`ERR: ${error}`);
-            }
-        );
+        try {
+            const query = new Query('Goods');
+            query.equalTo('statu', 'open');
+            const goodsList = await query.find();
+            return goodsList;
+        } catch (err) {
+            console.log(`ERROR: ${err}`);
+            return {};
+        }
     }
 
     @Post()
@@ -64,7 +57,7 @@ export class GoodsController {
             const newGoods = await new Goods('2222').save();
             console.log(`保存成功，objectId: ${newGoods.id}`);
         } catch (err) {
-            console.log(err);
+            console.log(`ERR: ${error}`);
         }
     }
 
