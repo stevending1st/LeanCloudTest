@@ -20,8 +20,8 @@ class Goods extends LCObject {
     statu?: string;
     constructor(username, statu = 'open') {
         super();
-        this.username = username;
-        this.statu = statu;
+        this.set('username', username);
+        this.set('statu', statu);
     }
 }
 LCObject.register(Goods);
