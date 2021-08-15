@@ -61,6 +61,20 @@ export class GoodsController {
         }
     }
 
+    @Post('/update')
+    async upDateGoods(username: string) {
+        try {
+            const newGoods = LCObject.createWithoutData('Goods', '2222');
+            await newGoods.save('statu', 'close', {
+                query: new Query('Goods').equalTo('username', username),
+                fetchWhenSave: true
+            });
+            return newGoods;
+        } catch (err) {
+            console.log(`ERR: ${err}`);
+        }
+    }
+
     // @Get('/:id')
     // @ResponseSchema(UserModel)
     // async getOne(@Param('id') id: string) {
