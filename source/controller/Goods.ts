@@ -64,14 +64,20 @@ export class GoodsController {
     @Post('/update')
     async upDateGoods(username: string) {
         try {
-            const newGoods = LCObject.createWithoutData('Goods', '2222');
-            await newGoods.save('statu', 'close', {
-                query: new Query('Goods').equalTo('username', username),
+            const goods = LCObject.createWithoutData('Goods', '111');
+            // 对 balance 原子减少 100
+            goods.set('statu', 'close');
+            const goodsObj = await goods.save(null, {
+                // 设置条件
+                query: new Query('Goods').equalTo('uaername', username),
+                // 操作结束后，返回最新数据。
+                // 如果是新对象，则所有属性都会被返回，
+                // 否则只有更新的属性会被返回。
                 fetchWhenSave: true
             });
-            return newGoods;
+            return goodsObj;
         } catch (err) {
-            console.log(`ERR: ${err}`);
+            console.log(`ERROR: ${err}`);
         }
     }
 
