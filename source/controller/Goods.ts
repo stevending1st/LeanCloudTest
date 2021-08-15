@@ -57,7 +57,7 @@ export class GoodsController {
             const newGoods = await new Goods('2222').save();
             console.log(`保存成功，objectId: ${newGoods.id}`);
         } catch (err) {
-            console.log(`ERR: ${error}`);
+            console.log(`ERR: ${err}`);
         }
     }
 
