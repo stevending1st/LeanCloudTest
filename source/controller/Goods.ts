@@ -29,15 +29,12 @@ class Goods extends LCObject {
 LCObject.register(Goods);
 
 class Userinfo {
-    @IsOptional()
     @IsString()
     statu: string;
 
-    @IsOptional()
     @IsString()
     username: string;
 
-    @IsOptional()
     @IsString()
     host: string;
 }
@@ -76,7 +73,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(@QueryParams() { statu, username, host }: Userinfo) {
+    async upDateGoods(@BodyParam('user') username: Userinfo) {
         try {
             // const goods = new Query('Goods');
             // // 对 balance 原子减少 100
