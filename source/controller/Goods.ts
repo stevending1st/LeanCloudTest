@@ -72,7 +72,7 @@ export class GoodsController {
     @Post('/update')
     async upDateGoods(
         @BodyParam('user') user: Userinfo,
-        @BodyParam('id') id: Userinfo
+        @BodyParam('idstr') id: Userinfo
     ) {
         try {
             // const goods = new Query('Goods');
