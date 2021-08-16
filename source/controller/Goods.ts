@@ -29,15 +29,12 @@ class Goods extends LCObject {
 LCObject.register(Goods);
 
 class Userinfo {
-    @IsOptional()
     @IsString()
     statu: string;
 
-    @IsOptional()
     @IsString()
     username: string;
 
-    @IsOptional()
     @IsString()
     host: string;
 }
