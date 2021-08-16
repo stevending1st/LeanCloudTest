@@ -83,7 +83,7 @@ export class GoodsController {
             // await goodsObj[0].save();
             // return { ok: 200 };
 
-            console.log('post:', user, id);
+            console.log('post:', Userinfo);
             const goods = new Query('Goods');
             // 对 balance 原子减少 100
             goods.equalTo('username', '5');
