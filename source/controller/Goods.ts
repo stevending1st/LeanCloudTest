@@ -64,11 +64,20 @@ export class GoodsController {
     @Post('/update')
     async upDateGoods() {
         try {
+            // const goods = new Query('Goods');
+            // // 对 balance 原子减少 100
+            // goods.equalTo('username', '1');
+            // const goodsObj = await goods.find();
+            // // console.log('goodsObj:', goodsObj);
+            // goodsObj[0].set('statu', 'close');
+            // await goodsObj[0].save();
+            // return { ok: 200 };
+
             const goods = new Query('Goods');
             // 对 balance 原子减少 100
-            goods.equalTo('username', '1');
+            goods.equalTo('username', ['3', '5']);
             const goodsObj = await goods.find();
-            console.log('goodsObj:', goodsObj);
+            // console.log('goodsObj:', goodsObj);
             goodsObj[0].set('statu', 'close');
             await goodsObj[0].save();
             return { ok: 200 };
