@@ -2,6 +2,7 @@ import {
     JsonController,
     Get,
     QueryParams,
+    BodyParam,
     // Param,
     // Patch,
     Body,
@@ -12,6 +13,7 @@ import { Query, Object as LCObject } from 'leanengine';
 
 // import { fetchPage } from '../utility';
 import { BaseQuery, UserModel, UserList } from '../model';
+import { isString } from 'class-validator';
 
 // import { BaseModel } from '../model/Base';
 
@@ -68,7 +70,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(@Body() user: Userinfo) {
+    async upDateGoods(@BodyParam('user') user: Userinfo) {
         try {
             // const goods = new Query('Goods');
             // // 对 balance 原子减少 100
