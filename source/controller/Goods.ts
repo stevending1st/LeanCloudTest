@@ -26,7 +26,7 @@ class Goods extends LCObject {
 }
 LCObject.register(Goods);
 
-@JsonController('/good')
+@JsonController('/goods')
 export class GoodsController {
     @Get()
     async getGoodsList(
@@ -68,6 +68,7 @@ export class GoodsController {
             // 对 balance 原子减少 100
             goods.equalTo('uaername', '1');
             const goodsObj = await goods.find();
+            console.log('goodsObj:', goodsObj);
             goodsObj[0].set('statu', 'close');
             await goodsObj[0].save();
             return { ok: 200 };
