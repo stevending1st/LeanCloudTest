@@ -66,7 +66,7 @@ export class GoodsController {
         try {
             const goods = new Query('Goods');
             // 对 balance 原子减少 100
-            goods.equalTo('uaername', '1');
+            goods.equalTo('username', '1');
             const goodsObj = await goods.find();
             console.log('goodsObj:', goodsObj);
             goodsObj[0].set('statu', 'close');
