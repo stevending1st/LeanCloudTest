@@ -72,10 +72,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(
-        @Body() user: Userinfo,
-        @BodyParam('idstr') id: Userinfo
-    ) {
+    async upDateGoods(@Body() { ...Userinfo }: Userinfo) {
         try {
             // const goods = new Query('Goods');
             // // 对 balance 原子减少 100
