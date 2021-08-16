@@ -29,7 +29,6 @@ class Goods extends LCObject {
 LCObject.register(Goods);
 
 class Userinfo {
-    @IsString()
     statu: string;
 
     @IsString()
