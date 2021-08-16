@@ -70,7 +70,7 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(@QueryParams() { ...pp }: Userinfo) {
+    async upDateGoods(@QueryParams() { statu, username, host }: Userinfo) {
         try {
             // const goods = new Query('Goods');
             // // 对 balance 原子减少 100
@@ -81,7 +81,7 @@ export class GoodsController {
             // await goodsObj[0].save();
             // return { ok: 200 };
 
-            console.log('post:', pp);
+            console.log('post:', statu, username, host);
             const goods = new Query('Goods');
             // 对 balance 原子减少 100
             goods.equalTo('username', '5');
