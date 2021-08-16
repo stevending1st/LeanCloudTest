@@ -70,7 +70,10 @@ export class GoodsController {
     }
 
     @Post('/update')
-    async upDateGoods(@BodyParam('user') user: Userinfo) {
+    async upDateGoods(
+        @BodyParam('user') user: Userinfo,
+        @BodyParam('id') id: Userinfo
+    ) {
         try {
             // const goods = new Query('Goods');
             // // 对 balance 原子减少 100
@@ -81,7 +84,7 @@ export class GoodsController {
             // await goodsObj[0].save();
             // return { ok: 200 };
 
-            console.log('post:', user);
+            console.log('post:', user, id);
             const goods = new Query('Goods');
             // 对 balance 原子减少 100
             goods.equalTo('username', '5');
