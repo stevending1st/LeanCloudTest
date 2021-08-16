@@ -8,7 +8,7 @@ import {
     QueryParams,
     Post
 } from 'routing-controllers';
-// import { ResponseSchema } from 'routing-controllers-openapi';
+import { ResponseSchema } from 'routing-controllers-openapi';
 import { Query, Object as LCObject } from 'leanengine';
 
 // import { fetchPage } from '../utility';
@@ -72,6 +72,7 @@ export class GoodsController {
     }
 
     @Post('/update')
+    @ResponseSchema(Userinfo)
     async upDateGoods(@Body() { ...Userinfo }: Userinfo) {
         try {
             // const goods = new Query('Goods');
