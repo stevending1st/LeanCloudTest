@@ -13,7 +13,7 @@ import { Query, Object as LCObject } from 'leanengine';
 
 // import { fetchPage } from '../utility';
 import { BaseQuery, UserModel, UserList } from '../model';
-import { isString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 // import { BaseModel } from '../model/Base';
 
@@ -29,10 +29,16 @@ class Goods extends LCObject {
 LCObject.register(Goods);
 
 class Userinfo {
+    @IsOptional()
+    @IsString()
     statu: string;
 
+    @IsOptional()
+    @IsString()
     username: string;
 
+    @IsOptional()
+    @IsString()
     host: string;
 }
 
