@@ -4,7 +4,7 @@ import {
     BodyParam,
     // Param,
     // Patch,
-    // Body,
+    Body,
     QueryParams,
     Post
 } from 'routing-controllers';
@@ -30,7 +30,9 @@ LCObject.register(Goods);
 
 class Userinfo {
     statu: string;
+
     username: string;
+
     host: string;
 }
 
@@ -71,7 +73,7 @@ export class GoodsController {
 
     @Post('/update')
     async upDateGoods(
-        @BodyParam('user') user: Userinfo,
+        @Body() user: Userinfo,
         @BodyParam('idstr') id: Userinfo
     ) {
         try {
