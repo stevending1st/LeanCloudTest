@@ -99,7 +99,7 @@ export class GoodsController {
     }
 
     @Post('/posttest')
-    postConsole(@BodyParam('some') some: Array<string>) {
+    postConsole(@BodyParam('some') some: any) {
         try {
             console.log(`some: ${some}`);
         } catch (err) {
