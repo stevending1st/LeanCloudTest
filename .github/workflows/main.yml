@@ -6,35 +6,36 @@ on:
 jobs:
     Build-and-Deploy:
         runs-on: ubuntu-latest
-        env:
-            LEANCLOUD_WEBHOOKS: ${{ secrets.LEANCLOUD_WEBHOOKS }}
-        if: '$LEANCLOUD_WEBHOOKS'
         steps:
-            - name: 11111111
+            - name: Get the LEANCLOUD_WEBHOOKS of secrets
               env:
                   LEANCLOUD_WEBHOOKS: ${{ secrets.LEANCLOUD_WEBHOOKS }}
               if: ${{ env.LEANCLOUD_WEBHOOKS }}
-              run: echo ${{ secrets.LEANCLOUD_WEBHOOKS }} ${{ env.LEANCLOUD_WEBHOOKS }}
-            # - name: Checkout
-            #   uses: actions/checkout@v2
-            # - name: Use Node.js
-            #   uses: actions/setup-node@v2
-            #   with:
-            #       node-version: '14'
-            # - name: Install & build
-            #   run: |
-            #       npm install
-            #       npm run build
-            #       echo source/ >> .gitignore
-            #       echo \!dist/ >> .gitignore
-            # - name: Deploy
-            #   uses: peaceiris/actions-gh-pages@v3
-            #   with:
-            #       publish_dir: ./
-            #       publish_branch: release
-            #       personal_token: ${{ secrets.GITHUB_TOKEN }}
-            #       force_orphan: true
-            # - name: Deploy to LeanEngine
-            #   uses: enflo/curl-action@v1.2
-            #   with:
-            #       curl: -X POST ${{ secrets.LEANCLOUD_WEBHOOKS }}
+            - name: Checkout
+              if: ${{ success() }}
+              uses: actions/checkout@v2
+            - name: Use Node.js
+              if: ${{ success() }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '14'
+            - name: Install & build
+              if: ${{ success() }}
+              run: |
+                  npm install
+                  npm run build
+                  echo source/ >> .gitignore
+                  echo \!dist/ >> .gitignore
+            - name: Deploy
+              if: ${{ success() }}
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  publish_dir: ./
+                  publish_branch: release
+                  personal_token: ${{ secrets.GITHUB_TOKEN }}
+                  force_orphan: true
+            - name: Deploy to LeanEngine
+              if: ${{ success() }}
+              uses: enflo/curl-action@v1.2
+              with:
+                  curl: -X POST ${{ secrets.LEANCLOUD_WEBHOOKS }}
