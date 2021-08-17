@@ -5,7 +5,9 @@ on:
             - master
 jobs:
     Build-and-Deploy:
-        if: ${{ secrets['LEANCLOUD_WEBHOOKS'] }}
+        env:
+            LEANCLOUD_WEBHOOKS: ${{ secrets.LEANCLOUD_WEBHOOKS }}
+        if: ${{ env.LEANCLOUD_WEBHOOKS }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
