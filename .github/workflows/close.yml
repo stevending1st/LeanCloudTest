@@ -13,6 +13,8 @@ jobs:
               with:
                   node-version: '14'
             - name: Use Node.js
+              env:
+                  PR: ${{ github.event.pull_request }}
               run: |
                   node
-                  console.log(${{github.event.}});
+                  console.log(${{ env.PR }});
