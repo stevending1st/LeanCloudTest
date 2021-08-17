@@ -11,5 +11,5 @@
         "lib": ["ES2020"],
         "outDir": "dist/"
     },
-    "include": ["source/**/*"]
+    "include": ["source/**/*", "./node.js"]
 }
