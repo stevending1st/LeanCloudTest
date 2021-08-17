@@ -1,0 +1,12 @@
+name: CI & CD
+on:
+    pull_request:
+        types: [closed]
+        branches:
+            - master
+jobs:
+    Build-and-Deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              run: echo ${{github.event.pull_request}}
