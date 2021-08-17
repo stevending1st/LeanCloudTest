@@ -13,7 +13,7 @@ jobs:
               if: ${{ env.LEANCLOUD_WEBHOOKS }}
               run: echo 'LEANCLOUD_WEBHOOKS is defined'
             - name: Checkout
-              if: ${{ !cancelled() }}
+              if: ${{ cancelled() }}
               uses: actions/checkout@v2
             - name: Use Node.js
               if: ${{ success() }}
