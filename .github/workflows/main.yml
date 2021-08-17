@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             LEANCLOUD_WEBHOOKS: ${{ secrets.LEANCLOUD_WEBHOOKS }}
-        if: ${{ env.LEANCLOUD_WEBHOOKS }}
+        if: '$LEANCLOUD_WEBHOOKS'
         steps:
             - name: 11111111
               env:
