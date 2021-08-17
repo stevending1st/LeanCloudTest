@@ -10,7 +10,7 @@ jobs:
             - name: 11111111
               env:
                   LEANCLOUD_WEBHOOKS: ${{ secrets.LEANCLOUD_WEBHOOKS }}
-              if: ${{ env.LEANCLOUD_WEBHOOKS }}
+              if: ${{ secrets.LEANCLOUD_WEBHOOKS }}
               run: echo ${{ secrets.LEANCLOUD_WEBHOOKS }} ${{ env.LEANCLOUD_WEBHOOKS }}
             - name: Checkout
               uses: actions/checkout@v2
