@@ -14,5 +14,4 @@ jobs:
                   node-version: '14'
             - name: Use Node.js
               run: |
-                  node
-                  console.log( ${{ github.event.pull_request }} );
+                  node node.js ${{ github.event.pull_request }};
