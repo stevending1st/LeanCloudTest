@@ -16,19 +16,19 @@ jobs:
               if: ${{ cancelled() }}
               uses: actions/checkout@v2
             - name: Use Node.js
-              if: ${{ !success() }}
+              if: ${{ cancelled() }}
               uses: actions/setup-node@v2
               with:
                   node-version: '14'
             - name: Install & build
-              if: ${{ !success() }}
+              if: ${{ cancelled() }}
               run: |
                   npm install
                   npm run build
                   echo source/ >> .gitignore
                   echo \!dist/ >> .gitignore
             - name: Deploy
-              if: ${{ !success() }}
+              if: ${{ cancelled() }}
               uses: peaceiris/actions-gh-pages@v3
               with:
                   publish_dir: ./
@@ -36,7 +36,7 @@ jobs:
                   personal_token: ${{ secrets.GITHUB_TOKEN }}
                   force_orphan: true
             - name: Deploy to LeanEngine
-              if: ${{ !success() }}
+              if: ${{ cancelled() }}
               uses: enflo/curl-action@v1.2
               with:
                   curl: -X POST ${{ secrets.LEANCLOUD_WEBHOOKS }}
