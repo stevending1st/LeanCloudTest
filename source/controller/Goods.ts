@@ -83,7 +83,6 @@ export class GoodsController {
             // goodsObj[0].set('statu', 'close');
             // await goodsObj[0].save();
             // return { ok: 200 };
-            //
 
             console.log('post:', username);
             const goods = new Query('Goods');
