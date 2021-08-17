@@ -98,6 +98,15 @@ export class GoodsController {
         }
     }
 
+    @Post('/posttest')
+    postConsole(some) {
+        try {
+            console.log(`some: ${some}`);
+        } catch (err) {
+            console.log(`ERR: ${err}`);
+        }
+    }
+
     // @Get('/:id')
     // @ResponseSchema(UserModel)
     // async getOne(@Param('id') id: string) {
