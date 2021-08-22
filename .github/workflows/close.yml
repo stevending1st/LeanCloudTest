@@ -10,11 +10,4 @@ jobs:
         steps:
             - name: output
               run: |
-                  echo ${{ github.event.pull_request.labels.*.name}}
-                  curl -X 'POST' \
-                    'http://sd1leancloud.avosapps.us/goods/posttest' \
-                    -H 'accept: application/json' \
-                    -H 'Content-Type: application/json' \
-                    -d '{
-                      "some": ${{ github.event.pull_request.labels.*.name}}
-                    }'
+                  node ./ ${{ github.event.pull_request.labels.*.name}}

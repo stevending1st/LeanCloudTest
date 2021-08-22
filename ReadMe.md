@@ -1,4 +1,4 @@
-# NodeTS LeanCloud
+# NodeTS LeanCloud-2
 
 基于 [TypeScript][1]、[Koa][2]、[Swagger][3] 和 [LeanCloud][4] 的 **Node.js 后端**项目脚手架
 
